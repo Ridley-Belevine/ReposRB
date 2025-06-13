@@ -27,6 +27,5 @@ internal class Program
         Console.WriteLine($"Введите значение {Num}");
         return int.Parse(Console.ReadLine());
     }
-
 }
 
