@@ -11,17 +11,17 @@ internal class Program
         Console.WriteLine("Введите значение аргумента функции");
         var x = float.Parse(Console.ReadLine());
 
-        Console.WriteLine($"Значение функции: {Function(x)}");
+        Console.WriteLine($"Полученное значение функции: {Function(x)}");
 
         Console.ReadKey();
     }
-    static double Function(float x)
+    static double Function(double x)
     {
         if (x > 0)
             return 1;
-        else if (x == 0)
-            return 0;
-        return -1;
-    }
+        else if (x < 0)
+            return -1;
 
+        return 0;
+    }
 }
