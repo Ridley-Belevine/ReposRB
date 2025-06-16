@@ -23,6 +23,13 @@ internal class Program
         Console.WriteLine("Первые 10 членов прогрессии: ");
         PrintArray(progression);
 
+        Console.WriteLine("\nВведите число k для увеличения элементов массива: ");
+        int k = int.Parse(Console.ReadLine());
+
+        IncreaseArrayElements(progression, k);
+        Console.WriteLine("Массив после увеличения: ");
+        PrintArray(progression);
+
     }
     static void PrintArray(int[] array)
     {
@@ -35,5 +42,11 @@ internal class Program
             }
         }
     }
-
+    static void IncreaseArrayElements(int[] array, int k)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] += k;
+        }
+    }
 }
