@@ -31,6 +31,12 @@ internal class Program
 
         int oddCount = CountOddElements(progression);
         Console.WriteLine("\nКоличество нечетных элементов: " + oddCount);
+
+        Console.Write("Введите натуральную степень для возведения: ");
+        int pow = int.Parse(Console.ReadLine());
+        int[] poweredArray = GetPoweredArray(progression, pow);
+        Console.Write("Элементы массива в заданной степени: ");
+        PrintArray(poweredArray);
     }
 
     static void PrintArray(int[] array)
@@ -66,4 +72,13 @@ internal class Program
         return count;
     }
 
+    static int[] GetPoweredArray(int[] array, int pow)
+    {
+        int[] result = new int[array.Length];
+        for (int i = 0; i < array.Length; i++)
+        {
+            result[i] = (int)Math.Pow(array[i], pow);
+        }
+        return result;
+    }
 }
