@@ -14,7 +14,7 @@ internal class Program
 
         if (n <= 0)
         {
-            Console.WriteLine("Количество чисел должно быть положительным");
+            Console.WriteLine("Количество чисел должно быть положительным числом");
             return;
         }
 
@@ -36,6 +36,7 @@ internal class Program
             }
             else
             {
+                Console.WriteLine("Число не соответствует заданному парметру четности/нечетности");
                 break;
             }
 
