@@ -7,6 +7,26 @@ using System.Threading.Tasks;
 
 namespace Pocketbook
 {
+    public class Event
+    {
+        public DateTime Date { get; set; }
+        public TimeSpan Time { get; set; }
+        public string Location { get; set; }
+
+        public Event(DateTime date, TimeSpan time, string location)
+        {
+            Date = date;
+            Time = time;
+            Location = location;
+        }
+
+        public virtual void Reminder()
+        {
+            Console.WriteLine($"Событие: {Date:dd.MM.yyyy} в {Time:hh\\:mm}");
+            Console.WriteLine($"Место: {Location}");
+        }
+    }
+
     public class Contact
     {
         public string Name { get; set; }
