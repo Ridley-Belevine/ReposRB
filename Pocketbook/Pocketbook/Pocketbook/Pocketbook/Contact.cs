@@ -27,7 +27,7 @@ namespace Pocketbook
         }
     }
 
-    public class Contact
+    public class Contact : IComparable<Contact>
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -68,6 +68,16 @@ namespace Pocketbook
             info[3] = $"{Notes}";
 
             return info;
+        }
+        public int CompareTo(Contact other)
+        {
+            if (other == null) return 1;
+
+            int valueComparison = string.Compare(Surname, other.Surname, StringComparison.Ordinal);
+            if (valueComparison != 0)
+                return valueComparison;
+
+            return string.Compare(Name, other.Name, StringComparison.Ordinal);
         }
     }
 }

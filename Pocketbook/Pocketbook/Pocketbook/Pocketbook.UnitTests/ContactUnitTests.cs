@@ -34,6 +34,38 @@ namespace Pocketbook.Tests
         }
 
         [Test]
+        public void CompareToSortsBySurname()
+        {
+            var contact1 = new Contact("Джейн", "Доу", "Работа", "г.Туфорт, Нью-Мексико, США", 235020596, 2, "Свадьба с Жанной, вторник, 12:00");
+            var contact2 = new Contact("Герберт", "Людвиг", "Работа", "г.Штутгарт, Баден-Вюртемберг, Германия", 680030661, 7, "Встретиться и обсудить аспекты лечения");
+            var contact3 = new Contact("Джереми", "Уиллис", "Друзья", "г.Бостон, Нью-Джерси, США", 405000577, 1, "Закупиться к празднованию Рождества, Мега Молл, 17:30");
+            var contact4 = new Contact("Жанна", "Доу", "Семья", "г.Туфорт, Нью-Мексико, США", 295095922, 3, "Спросить о том, когда приедут мать и сестры");
+
+            Assert.That(contact1.CompareTo(contact2), Is.LessThan(0));
+            Assert.That(contact2.CompareTo(contact3), Is.LessThan(0));
+            Assert.That(contact3.CompareTo(contact1), Is.GreaterThan(0));
+
+            Assert.That(contact1.CompareTo(contact4), Is.LessThan(0));
+
+            Assert.That(contact1.CompareTo(null), Is.GreaterThan(0));
+
+            var contacts = new List<Contact>{ contact3, contact1, contact4, contact2 };
+            contacts.Sort();
+
+            Assert.That(contacts[0].Name, Is.EqualTo("Джейн"));
+            Assert.That(contacts[0].Surname, Is.EqualTo("Доу"));
+
+            Assert.That(contacts[1].Name, Is.EqualTo("Жанна"));
+            Assert.That(contacts[1].Surname, Is.EqualTo("Доу"));
+
+            Assert.That(contacts[2].Name, Is.EqualTo("Герберт"));
+            Assert.That(contacts[2].Surname, Is.EqualTo("Людвиг"));
+
+            Assert.That(contacts[3].Name, Is.EqualTo("Джереми"));
+            Assert.That(contacts[3].Surname, Is.EqualTo("Уиллис"));
+        }
+
+        [Test]
         public void GetInfoTest()
         {
             var contact = CreateTestContact();
